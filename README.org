@@ -28,6 +28,14 @@
   - Use ~M-x doctest~ to run doctests on an entire buffer.
   - Use ~M-x doctest-here~ to run the doctest on the current line.
   - Use ~M-x doctest-defun~ to run the current defun's doctests.
+** Running Doctests With ERT
+
+You can run your doctests with ERT like so:
+
+#+begin_src emacs-lisp
+(ert-deftest doctests () (should (equal 0 (doctest "../your-file.el"))))
+#+end_src
+
 * Related
   - [[https://docs.python.org/3/library/doctest.html][Python doctest]], the original
   - [[https://elixir-lang.org/getting-started/mix-otp/docs-tests-and-with.html][Elixir]] supports doctests
