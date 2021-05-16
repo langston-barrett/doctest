@@ -48,8 +48,9 @@
 
 (defun doctest (&optional filename)
   "Run doctest on current buffer, or FILENAME if given.
-When run interactively, the point will move to the site of the
-first test failure (or the first syntax error in a test).
+Returns the number of failing tests. When run interactively, the
+point will move to the site of the first test failure (or the
+first syntax error in a test).
 
 A living example:
 >> (cons (list 6 'quoted :symbol 12345 \"A string\") (+ 0 8310247))
@@ -68,7 +69,8 @@ This function sends its report using `send-string-to-terminal' if
     (cond (doctest--first-failure
            (goto-char doctest--first-failure)
            (doctest--message (format "%s\n%s" tally doctest--text)))
-          (t (doctest--message tally)))))
+          (t (doctest--message tally))))
+  doctest--fail)
 
 (defun doctest-here (&optional interactively)
   "Run the test that the point is currently on.
